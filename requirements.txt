@@ -1,0 +1,21 @@
+# install via conda->pip
+# conda install pip
+# pip install pytorch-lightning
+# pip install opencv-python
+# pip install h5py
+# pip install kornia
+# wget?? - probably not
+# pip install pytorch-lightning opencv-python h5py kornia
+
+torch>=1.12.1
+# torchvision>=0.13.1
+numpy~=1.23.2
+matplotlib>=3.5.3
+opencv-python~=4.6.0.66
+pillow>=9.2.0
+kornia
+h5py
+
+# these two not needed for aff_cov_feat_ds experiments with hloc
+# wandb~=0.13.3
+# omegaconf~=2.2.3
