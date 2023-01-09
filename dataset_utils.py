@@ -47,7 +47,6 @@ def scale_img(img, scale):
     scale_o = scale
     # the scale needs to be (slightly) changed so that the aspect ratio is
     scale = get_integer_scale(scale, h, w)
-    print(f"scale: {scale_o} => {scale}")
 
     H_gt = np.array([
         [scale, 0., 0.5 * (scale - 1)],
@@ -56,6 +55,7 @@ def scale_img(img, scale):
     ])
 
     dsize = (round(w * scale), round(h * scale))
+    print(f"scale: {scale_o} => {scale}, dimension: {w}x{h} => {dsize[0], dsize[1]}")
     pil = Image.fromarray(img)
     pil_scaled = pil.resize(size=dsize, resample=Image.Resampling.LANCZOS)
     np_scaled = np.array(pil_scaled)
@@ -72,7 +72,7 @@ def np_show(img, title=None):
     plt.close()
 
 
-def Hs_imgs_for_bark():
+def Hs_imgs_for_bark(rotate_query_imgs=False):
     # see https://www.robots.ox.ac.uk/~vgg/data/affine/
 
     Hs_bark = [
@@ -100,10 +100,15 @@ def Hs_imgs_for_bark():
     Hs_bark = np.array(Hs_bark)
     files_bark = [f"imgs/bark/img{i + 1}.ppm" for i in range(6)]
     imgs_bark = read_imgs(files_bark, show=False)
+
+    if rotate_query_imgs:
+        Hs_bark = [rotation_gt_Hs(imgs_bark[i + 1])[1] @ H_b for i, H_b in enumerate(Hs_bark)]
+        imgs_bark = imgs_bark[:1] + [np.rot90(fb, 2, [0, 1]).copy() for fb in imgs_bark[1:]]
+
     return Hs_bark, imgs_bark
 
 
-def Hs_imgs_for_boat():
+def Hs_imgs_for_boat(rotate_query_imgs=False):
     # see https://www.robots.ox.ac.uk/~vgg/data/affine/
 
     Hs_boat = [
@@ -130,6 +135,11 @@ def Hs_imgs_for_boat():
     Hs_boat = np.array(Hs_boat)
     files_boat = [f"imgs/boat/img{i + 1}.pgm" for i in range(6)]
     imgs_boat = read_imgs(files_boat, show=False)
+
+    if rotate_query_imgs:
+        Hs_boat = [rotation_gt_Hs(imgs_boat[i + 1])[1] @ H_b for i, H_b in enumerate(Hs_boat)]
+        imgs_boat = imgs_boat[:1] + [np.rot90(fb, 2, [0, 1]).copy() for fb in imgs_boat[1:]]
+
     return Hs_boat, imgs_boat
 
 
@@ -188,7 +198,6 @@ def Hs_imgs_for_scaling_torch(device=torch.device("cpu")):
 
 
 def Hs_imgs_for_rotation_torch(device=torch.device("cpu")):
-
     Hs, imgs = Hs_imgs_for_rotation()
     Hs_t, imgs_t = transform_to_torch(Hs, imgs, device)
     return Hs_t, imgs_t
