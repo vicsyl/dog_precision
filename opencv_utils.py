@@ -1,21 +1,5 @@
 import cv2 as cv
 import numpy as np
-import torch
-
-
-def detect_kpts(img_np, detector, correct):
-
-    kpts = detector.detect(img_np, mask=None)
-
-    if len(kpts) == 0:
-        return [], []
-
-    kpt_f = torch.tensor([[kp.pt[0], kp.pt[1]] for kp in kpts])
-    if correct:
-        kpt_f -= 0.25
-    scales = torch.tensor([kp.size for kp in kpts])
-
-    return kpt_f, scales
 
 
 def split_points(tentative_matches, kps0, kps1):
