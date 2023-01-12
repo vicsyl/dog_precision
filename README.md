@@ -8,8 +8,7 @@
 > pip install -r requirements.txt
 ```
 
-# Installation of hloc
+## Installation of hloc
  
-```
-> install `hloc` from local clone of https://github.com/cvg/Hierarchical-Localization
-```
+* install `hloc` from local clone of https://github.com/cvg/Hierarchical-Localization
+
