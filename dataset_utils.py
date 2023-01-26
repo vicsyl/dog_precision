@@ -203,13 +203,13 @@ def Hs_imgs_for_rotation_torch(device=torch.device("cpu")):
     return Hs_t, imgs_t
 
 
-def Hs_imgs_for_boat_torch(device=torch.device("cpu")):
-    Hs, imgs = Hs_imgs_for_boat()
+def Hs_imgs_for_boat_torch(device=torch.device("cpu"), rotate_query_imgs=False):
+    Hs, imgs = Hs_imgs_for_boat(rotate_query_imgs)
     Hs_t, imgs_t = transform_to_torch(Hs, imgs, device)
     return Hs_t, imgs_t
 
 
-def Hs_imgs_for_bark_torch(device=torch.device("cpu")):
-    Hs, imgs = Hs_imgs_for_bark()
+def Hs_imgs_for_bark_torch(device=torch.device("cpu"), rotate_query_imgs=False):
+    Hs, imgs = Hs_imgs_for_bark(rotate_query_imgs)
     Hs_t, imgs_t = transform_to_torch(Hs, imgs, device)
     return Hs_t, imgs_t

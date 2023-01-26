@@ -162,7 +162,6 @@ class FixedScaleSpaceDetector(nn.Module):
 
             # Zero response lafs, which touch the boundary
             good_mask = laf_is_inside_image(current_lafs, octave[:, 0])
-            good_mask[:] = True
             resp_flat_best = resp_flat_best * good_mask.to(dev, dtype)
 
             # Normalize LAFs
