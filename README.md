@@ -1,3 +1,5 @@
+![example](./resources/animation_original.gif)  ![example](./resources/animation_fix.gif)
+
 # Fixing the interpolation in DoG 
 
 * this repo contains examples showing the fix for interpolation in scale space
