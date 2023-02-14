@@ -55,7 +55,7 @@ def scale_img(img, scale):
     ])
 
     dsize = (round(w * scale), round(h * scale))
-    print(f"scale: {scale_o} => {scale}, dimension: {w}x{h} => {dsize[0], dsize[1]}")
+    print(f"scale: {scale_o} => {scale}, dimension: {w}x{h} => {dsize[0]}x{dsize[1]}")
     pil = Image.fromarray(img)
     pil_scaled = pil.resize(size=dsize, resample=Image.Resampling.LANCZOS)
     np_scaled = np.array(pil_scaled)
@@ -98,7 +98,7 @@ def Hs_imgs_for_bark(rotate_query_imgs=False):
     ]
 
     Hs_bark = np.array(Hs_bark)
-    files_bark = [f"imgs/bark/img{i + 1}.ppm" for i in range(6)]
+    files_bark = [f"../imgs/bark/img{i + 1}.ppm" for i in range(6)]
     imgs_bark = read_imgs(files_bark, show=False)
 
     if rotate_query_imgs:
@@ -133,7 +133,7 @@ def Hs_imgs_for_boat(rotate_query_imgs=False):
          [9.9064973e-05, -5.8498673e-05, 1.0000000e+00]]
     ]
     Hs_boat = np.array(Hs_boat)
-    files_boat = [f"imgs/boat/img{i + 1}.pgm" for i in range(6)]
+    files_boat = [f"../imgs/boat/img{i + 1}.pgm" for i in range(6)]
     imgs_boat = read_imgs(files_boat, show=False)
 
     if rotate_query_imgs:
@@ -173,14 +173,14 @@ def Hs_imgs_for_scaling_for_file(file, scales, crop_h2=False):
 
 
 def Hs_imgs_for_scaling():
-    files_bark = [f"imgs/bark/img{i + 1}.ppm" for i in range(6)]
+    files_bark = [f"../imgs/bark/img{i + 1}.ppm" for i in range(6)]
     scales = [scale_int / 10 for scale_int in range(2, 10)]
     Hs, imgs = Hs_imgs_for_scaling_for_file(files_bark[0], scales, crop_h2=True)
     return Hs, imgs, scales
 
 
 def Hs_imgs_for_rotation():
-    files_bark = [f"imgs/bark/img{i + 1}.ppm" for i in range(6)]
+    files_bark = [f"../imgs/bark/img{i + 1}.ppm" for i in range(6)]
     return Hs_imgs_for_rotation_for_file(files_bark[0], show=False)
 
 
