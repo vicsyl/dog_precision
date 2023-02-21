@@ -1,4 +1,4 @@
-![example](./resources/animation_original.gif)  ![example](./resources/animation_fix.gif)
+![example](./resources/animation_mono.gif)
 
 # Fixing the interpolation in DoG 
 
