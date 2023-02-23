@@ -152,7 +152,7 @@ class CustomSIFTFeature(LocalFeature):
     def __init__(
             self,
             scale_space_detector,
-            rootsift: bool = True,
+            rootsift: bool = False,
             device: torch.device = torch.device('cpu'),
     ):
         patch_size: int = 41
