@@ -64,7 +64,7 @@
 ### Recommended installation of the standard dependencies
 
 ```
-> conda create -n <env_name> python=3.10 
+> conda create -n <env_name> python=3.9
 > conda activate <env_name>
 > conda install pip
 > pip install -r requirements.txt
